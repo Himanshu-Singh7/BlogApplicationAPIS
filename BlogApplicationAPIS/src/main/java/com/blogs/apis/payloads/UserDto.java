@@ -14,8 +14,7 @@ import lombok.Setter;
 public class UserDto {
 
 	private int id;
-    
-	@NotEmpty
+        @NotEmpty
 	@Size(min = 4,max = 20,message="UserName must be minimum 4 to 20 charcter !!")
 	private String name;
 	@Email(message="Your EmailId is not valid !!")
