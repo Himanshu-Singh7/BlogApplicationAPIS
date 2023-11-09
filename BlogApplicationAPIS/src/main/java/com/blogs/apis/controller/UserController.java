@@ -40,14 +40,14 @@ public class UserController {
 		return ResponseEntity.ok(updateUser);
 	}
 
-	// GET Retrieve one data by id
+	// GET Retrive one data by id
 	@GetMapping("/{userId}")
     public ResponseEntity<UserDto> getSingleUser(@PathVariable Integer userId){
 	 
     	return ResponseEntity.ok(this.userService.getUserById(userId));
    }
 
-	// DELETE Delete user by Id 
+	// Delete
     @DeleteMapping("/{userId}")
 	public ResponseEntity<ApiResponse> deleteUser(@PathVariable("userId") Integer uid ){
     	 this.userService.deleteUser(uid);
@@ -55,7 +55,7 @@ public class UserController {
     	 
 	}
     
-    // GET Retrieve all data
+    // GET Retrive all data
     
     @GetMapping("/")
     public ResponseEntity<List<UserDto>> getAllUser(){
