@@ -78,7 +78,7 @@ public class PostServiceImp implements PostService {
 		return postDto;
 
 	}
-
+     // Pagination
 	@Override
 	public PostResponse getAllPost(Integer pageNumber, Integer pageSize, String sortBy ,String sortDir ) {
 		Sort sort = null;
