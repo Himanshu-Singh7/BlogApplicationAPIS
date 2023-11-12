@@ -106,7 +106,7 @@ public class PostServiceImp implements PostService {
 		postResponse.setLastPages(pagePost.isLast());
 		return postResponse;
 	}
-
+// end
 	@Override
 	public List<PostDto> getPostByCategory(Integer categoryId) {
 		Category cat = this.categoryRepo.findById(categoryId)
