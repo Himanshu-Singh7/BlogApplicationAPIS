@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.blogs.apis.payloads.ApiResponse;
 import com.blogs.apis.payloads.PostDto;
 import com.blogs.apis.payloads.PostResponse;
@@ -87,8 +86,7 @@ public class PostController {
 	}
 
 	// Search Post By Title
-
-	@GetMapping("/posts/search/{keywords}")
+        @GetMapping("/posts/search/{keywords}")
 	public ResponseEntity<List<PostDto>> searchPostByTitle(@PathVariable("keywords") String keyword) {
 		List<PostDto> search = this.postService.searchPosts(keyword);
         return new ResponseEntity<List<PostDto>>(search, HttpStatus.OK);
