@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -78,19 +79,19 @@ public class PostServiceImp implements PostService {
 		return postDto;
 
 	}
-     // Pagination
+
 	@Override
-	public PostResponse getAllPost(Integer pageNumber, Integer pageSize, String sortBy ,String sortDir ) {
+	public PostResponse getAllPost(Integer pageNumber, Integer pageSize, String sortBy, String sortDir) {
 		Sort sort = null;
-		
-		if(sortDir.equalsIgnoreCase("asc")) {
-			
+
+		if (sortDir.equalsIgnoreCase("asc")) {
+
 			sort = Sort.by(sortBy).ascending();
-		}else {
+		} else {
 			sort = Sort.by(sortBy).descending();
 		}
-		
-		Pageable p = PageRequest.of(pageNumber, pageSize,sort);
+
+		Pageable p = PageRequest.of(pageNumber, pageSize, sort);
 		Page<Post> pagePost = this.postRepo.findAll(p);
 		List<Post> allPosts = pagePost.getContent();
 
@@ -106,7 +107,7 @@ public class PostServiceImp implements PostService {
 		postResponse.setLastPages(pagePost.isLast());
 		return postResponse;
 	}
-// end
+
 	@Override
 	public List<PostDto> getPostByCategory(Integer categoryId) {
 		Category cat = this.categoryRepo.findById(categoryId)
@@ -130,6 +131,14 @@ public class PostServiceImp implements PostService {
 
 		return postDtos;
 
+	}
+
+	@Override
+	public List<PostDto> searchPosts(String Keyword) {
+		List<Post> posts = this.postRepo.searchByTitle("%"+ Keyword+ "%");
+		List<PostDto> postDtos = posts.stream().map((post) -> this.modelMapper.map(posts, PostDto.class))
+				.collect(Collectors.toList());
+		return postDtos;
 	}
 
 }
