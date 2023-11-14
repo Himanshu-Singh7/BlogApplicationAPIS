@@ -132,7 +132,7 @@ public class PostServiceImp implements PostService {
 		return postDtos;
 
 	}
-// Search
+
 	@Override
 	public List<PostDto> searchPosts(String Keyword) {
 		List<Post> posts = this.postRepo.searchByTitle("%"+ Keyword+ "%");
@@ -140,5 +140,7 @@ public class PostServiceImp implements PostService {
 				.collect(Collectors.toList());
 		return postDtos;
 	}
+	
+	
 
 }
