@@ -1,2 +1,2 @@
-# BlogApplicationAPIS
-REST API  Using SpringBoot, Spring Data JPA (Hibernate), SpringSecurity, JWT and MySQL
+# BlogApplication APIS
+REST API  Using SpringBoot, Spring Data JPA (Hibernate), SpringSecurity, JWT, and MySQL.
