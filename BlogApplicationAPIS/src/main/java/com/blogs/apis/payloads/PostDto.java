@@ -1,6 +1,10 @@
 package com.blogs.apis.payloads;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import com.blogs.apis.entites.Comment;
 
 import lombok.Data;
 import lombok.Getter;
@@ -27,6 +31,7 @@ public class PostDto {
 	
 	private UserDto user;
 	
+	private Set<CommentDto> comments = new HashSet<>();
 	
 
 }
