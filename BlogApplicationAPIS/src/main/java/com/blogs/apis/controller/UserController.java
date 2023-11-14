@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.blogs.apis.payloads.ApiResponse;
 import com.blogs.apis.payloads.UserDto;
 import com.blogs.apis.service.UserService;
-
 import jakarta.validation.Valid;
 
 @RestController
@@ -44,13 +43,12 @@ public class UserController {
 
 	// GET Retrive one data by id
 	@GetMapping("/{userId}")
-    public ResponseEntity<UserDto> getSingleUser(@PathVariable Integer userId){
-	 
-    	return ResponseEntity.ok(this.userService.getUserById(userId));
-   }
+       public ResponseEntity<UserDto> getSingleUser(@PathVariable Integer userId){
+	 return ResponseEntity.ok(this.userService.getUserById(userId));
+      }
 
 	// Delete
-    @DeleteMapping("/{userId}")
+        @DeleteMapping("/{userId}")
 	public ResponseEntity<ApiResponse> deleteUser(@PathVariable("userId") Integer uid ){
     	 this.userService.deleteUser(uid);
     	 return new ResponseEntity<ApiResponse>(new ApiResponse("User deleted successfully ",true),HttpStatus.OK);
